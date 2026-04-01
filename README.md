@@ -26,8 +26,12 @@ Skills in `skills/` are the **source of truth**. Copy or symlink them into a cli
 | [frontend-developer](skills/frontend-developer/SKILL.md) | UI implementation and review: accessibility, performance, components, modern web practices. |
 | [backend-developer](skills/backend-developer/SKILL.md) | APIs, domain logic, data, messaging, security, observability, resilience. |
 | [software-architect](skills/software-architect/SKILL.md) | System design, ADRs, quality attributes, tradeoffs, evolution and team-aligned boundaries. |
+| [ai-engineer](skills/ai-engineer/SKILL.md) | Build and ship ML/AI systems: data pipelines, training and fine-tuning, evaluation, inference and serving, optimization, MLOps, and debugging—implementation and operations, not literature-only work. |
+| [ai-researcher](skills/ai-researcher/SKILL.md) | Research-side AI: literature synthesis, hypotheses, experimental design, ablations, statistical reasoning, reproducibility planning, and clear methods/limitations—papers and rigor, not primary production deployment. |
 
 See each skill’s `SKILL.md` for scope, triggers, and workflows.
+
+**AI engineering vs research:** Use **ai-engineer** when the task centers on code, pipelines, training, deployment, or SLAs. Use **ai-researcher** when the task centers on surveying work, designing experiments, or writing research narratives. Pair them when a project needs both.
 
 ## Quick start
 

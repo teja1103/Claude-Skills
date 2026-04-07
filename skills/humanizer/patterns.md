@@ -1,6 +1,6 @@
 # AI Writing Patterns: Detailed Before/After Examples
 
-Reference file for the humanizer skill. Each of the 30 patterns includes the problem description, words to watch, and concrete before/after examples.
+Reference file for the humanizer skill. Each of the 24 patterns includes the problem description, words to watch, and concrete before/after examples.
 
 ---
 
@@ -304,77 +304,3 @@ Reference file for the humanizer skill. Each of the 30 patterns includes the pro
 
 **After:**
 > The company plans to open two more locations next year.
-
----
-
-## Reasoning and Structure Patterns
-
-### 25. Numbered-step reasoning where prose would be natural
-
-**Problem:** AI defaults to numbered lists or "First...Second...Third..." for arguments and explanations that aren't actually sequential.
-
-**Before:**
-> There are several reasons why remote work has increased. First, the COVID-19 pandemic forced companies to adopt remote policies. Second, employees reported higher satisfaction with flexible schedules. Third, companies realized they could reduce office costs. Finally, advances in collaboration tools made remote work more practical.
-
-**After:**
-> Remote work took off because of COVID — that's the obvious part. But it stuck around because it turned out most people preferred it and companies liked cutting their lease costs. The tools caught up too, though honestly Zoom fatigue is its own problem.
-
----
-
-### 26. Exhaustive balanced coverage
-
-**Problem:** AI gives every subtopic equal weight, producing encyclopedia-style prose where every "aspect" gets its paragraph regardless of importance or interest.
-
-**Before:**
-> Tokyo is known for its history, culture, cuisine, technology, and natural beauty. The city's history dates back to the 15th century when it was known as Edo. Its culture blends traditional and modern elements. The cuisine ranges from street food to Michelin-starred restaurants. Technology innovation drives much of the economy. Natural attractions include parks and nearby Mount Fuji.
-
-**After:**
-> If you go to Tokyo, you eat. That's the point. The convenience stores alone are better than most restaurants I've been to in other cities. I had an egg sandwich from 7-Eleven at 2 AM that I still think about. The shrines and the Shibuya crossing and all that are worth seeing, sure, but the food is why you'd go back.
-
----
-
-### 27. Connector addiction
-
-**Problem:** Every sentence or paragraph opens with a transition word, creating a cadence that's immediately recognizable as AI-generated.
-
-**Before:**
-> The team decided to switch to TypeScript. Moreover, they adopted a stricter linting configuration. Furthermore, code reviews became mandatory for all pull requests. Additionally, they implemented automated testing. Consequently, bug rates dropped by 30%.
-
-**After:**
-> The team switched to TypeScript and got strict about linting and code reviews. Bug rates dropped 30%. Whether that's the TypeScript or the reviews is anybody's guess — they changed everything at once.
-
----
-
-### 28. Abstraction over specifics
-
-**Problem:** AI summarizes at a high level instead of showing concrete details. It gestures at specifics without providing them.
-
-**Before:**
-> The restaurant offers a variety of dishes that cater to different dietary preferences. Various factors contribute to its popularity, including the quality of ingredients and the creativity of the menu. Several reviews have highlighted the dining experience as exceptional.
-
-**After:**
-> They do a miso-glazed black cod that's genuinely excellent — the kind of dish where you scrape the plate. Portions are small for the price (the cod is $38), and the wait on weekends is easily an hour without a reservation.
-
----
-
-### 29. Recursive summarization
-
-**Problem:** AI restates what it just said at the end of paragraphs and sections. Conclusions echo introductions.
-
-**Before:**
-> Agile methodology emphasizes iterative development and frequent feedback. Teams work in short sprints to deliver incremental value. Stakeholders review progress regularly to ensure alignment. In summary, agile methodology focuses on iterative development, frequent feedback, and regular stakeholder reviews to deliver value incrementally.
-
-**After:**
-> Agile boils down to short sprints and frequent check-ins. Whether your team actually benefits from that depends a lot on whether your stakeholders show up to the reviews. In my experience, about half the time they don't, and then you're just doing waterfall with extra meetings.
-
----
-
-### 30. Uniform confidence tone
-
-**Problem:** Every sentence carries the same mid-level certainty. AI doesn't distinguish between things it's sure about, things it's guessing about, and things nobody knows.
-
-**Before:**
-> Exercise improves cardiovascular health. It also enhances mental well-being. Regular physical activity can reduce the risk of chronic diseases. Additionally, exercise has been shown to improve sleep quality and cognitive function.
-
-**After:**
-> Exercise is good for your heart — that's about as settled as anything in medicine. The mental health benefits are real too, though the mechanism is less clear. Sleep improvement? Probably, based on what I've read, but I've also had plenty of nights where a hard workout left me wired at midnight. Your mileage will vary.

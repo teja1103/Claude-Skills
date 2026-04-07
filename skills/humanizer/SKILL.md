@@ -3,12 +3,12 @@ name: humanizer
 version: 4.0.0
 description: |
   Transform AI-generated text into writing that reads as authentically human and
-  passes AI detection tools (GPTZero, Originality.ai, Turnitin, ZeroGPT, Copyleaks,
-  Winston AI). Use when editing, reviewing, or rewriting text to remove AI fingerprints.
-  Applies a three-pass method: strip 30 known AI patterns (content, language, style,
-  structure, reasoning), inject human writing signals (burstiness, perplexity variation,
-  voice, epistemic texture), and audit against detector heuristics including token
-  probability analysis and sentence-level classification.
+  passes AI detection tools (GPTZero, Originality.ai, Turnitin, ZeroGPT). Use when
+  editing, reviewing, or rewriting text to remove AI fingerprints — including academic
+  papers, research dissertations, and essays that must pass Turnitin's sentence-level
+  AI scanner. Applies a three-pass method: strip 24 general + 12 academic AI patterns,
+  inject human writing signals (burstiness, perplexity variation, voice), and audit
+  against detector heuristics. Not for plagiarism or fabricating citations.
 ---
 
 # Humanizer: Defeat AI Detection
@@ -17,9 +17,9 @@ AI detectors measure two things: **pattern recognition** (known AI writing tics)
 
 ## Three-pass method
 
-1. **Strip** — Remove all 30 known AI writing patterns
-2. **Inject** — Add human signals: burstiness, perplexity variation, voice, epistemic texture, imperfection
-3. **Audit** — Self-check against detector heuristics (including sentence-level classifiers), revise remaining tells
+1. **Strip** — Remove all 24 known AI writing patterns
+2. **Inject** — Add human signals: burstiness, perplexity variation, voice, imperfection
+3. **Audit** — Self-check against detector heuristics, revise remaining tells
 
 ---
 
@@ -115,37 +115,41 @@ Watch: from X to Y constructions where X and Y aren't on a meaningful scale
 **24. Generic positive conclusions** — "The future looks bright", "Exciting times ahead", "journey toward excellence"
 → End with specific facts, plans, or an honest assessment.
 
-### Reasoning and structure patterns
+---
 
-**25. Numbered-step reasoning where prose would be natural**
-Watch: "First, ... Second, ... Third, ... Finally, ..." or "Step 1: ... Step 2: ..." for things that aren't actually sequential.
-→ Weave the logic into prose. Humans use numbered steps for actual procedures (recipes, instructions), not for presenting arguments or explaining concepts.
+## Academic writing patterns (A1–A12)
 
-**26. Exhaustive balanced coverage**
-Watch: every paragraph covers one "aspect" with equal weight. Topic → history → benefits → challenges → future. AI treats every subject as deserving a five-paragraph essay with equal-length sections.
-→ Be lopsided. Spend 80% on the interesting part. Skip the boring parts. Humans write what they care about, not a balanced encyclopedia entry.
+Academic text triggers Turnitin's sentence-level classifier differently from blog or opinion writing. These patterns are invisible to the general 24 checks above but cause heavy flagging in research papers. For detailed before/after examples, see [academic.md](academic.md).
 
-**27. Connector addiction**
-Watch: every sentence or paragraph opens with a transition word. "However," "Moreover," "Furthermore," "In addition," "Consequently," "Nevertheless," "Similarly," "Conversely."
-→ Delete most connectors. Start sentences with the subject. The relationship between ideas is usually obvious from context. Two connectors per 500 words is plenty.
+**A1. Nominalization stacking** — Chains of abstract nouns where verbs would do: "the cultural determinants of the employee stress experience" → "how culture shapes employee stress." Reduce by ≥50%.
 
-**28. Abstraction over specifics**
-Watch: AI summarizes instead of showing. "Various factors contribute to..." "Multiple approaches exist for..." "There are several considerations..."
-→ Name the specific factors. Give one concrete example instead of gesturing at many. "The lease was $1,200/month" beats "housing costs were a significant factor."
+**A2. Uniform sentence complexity** — Every sentence has 2–3 subordinate clauses and lands between 25–50 words. Mix in short declarative sentences (8–12 words) between complex ones. Aim for at least one sub-15-word sentence per paragraph.
 
-**29. Recursive summarization**
-Watch: the conclusion restates the introduction. The last paragraph of a section echoes the first. Sub-conclusions appear after every section.
-→ Don't summarize what you just said. End sections by moving forward (next point, implication, open question), not backward.
+**A3. Academic vocabulary inflation** — "conceptualized", "operationalized", "contextually situated", "empirically substantive", "theore­tically informed", "irreducibly personal." Replace with plainer equivalents unless the term is a defined construct in the field.
 
-**30. Uniform confidence tone**
-Watch: AI writes everything with the same mid-level certainty. No sentence is tentative; no sentence is emphatic. Every claim has the same informational temperature.
-→ Vary confidence. Some things you're sure about — write them bluntly. Some things you're guessing — say so. "I think" and "definitely" should both appear, in the right places.
+**A4. Lockstep paragraph structure** — Every paragraph follows: topic sentence → elaboration → citation → bridge to next paragraph. Break the template: start some paragraphs with a question, a concession, a quote, or a direct claim. End some without a bridge.
+
+**A5. Formulaic metadiscourse** — "The present study seeks to", "This research endeavors to", "It is within this framework that." Vary: "We set out to", "The goal here was", "This chapter asks whether."
+
+**A6. Passive voice dominance** — AI defaults to passive in academic writing far more than human researchers do. Mix active and passive. "We interviewed 30 professionals" is legitimate academic prose, not informal.
+
+**A7. Citation integration monotony** — Every citation as (Author, Year) at sentence end. Vary: "As Schein (2017) argued,", "Schein's (2017) framework suggests", "This aligns with earlier work on organizational culture (Schein, 2017; see also Hofstede et al., 2010)."
+
+**A8. Triad amplification** — Groups of three modifiers, nouns, or clauses appearing in nearly every sentence: "accuracy, nuance, and respect." Use the natural count — sometimes two, sometimes four, sometimes one.
+
+**A9. Qualifier chains** — "a critically important and fundamentally significant contribution to the growing body of scholarship." Cut to one qualifier or none.
+
+**A10. Theoretical name-dropping** — Listing 4–5 theories with identical paragraph structure for each. Give unequal treatment: deep engagement with 1–2, brief mention of the rest.
+
+**A11. Gap rhetoric** — "Significant lacunae remain in the existing literature that the present study seeks to address." State the gap plainly: "Few qualitative studies have examined this in Indian workplaces."
+
+**A12. Hedging uniformity** — Every claim hedged identically with "may", "suggests", "appears to." Commit to some claims outright. Hedge others with different constructions: "The evidence points to", "In our reading of the data", "Though preliminary, these findings indicate."
 
 ---
 
 ## Pass 2: Inject human signals
 
-Stripping AI patterns produces clean but sterile text. Detectors flag this too — it has low burstiness and uniform perplexity. Modern detectors (2025+) also look at sentence-level token probability uniformity and epistemic consistency. This pass adds the statistical and cognitive fingerprint of human authorship.
+Stripping AI patterns produces clean but sterile text. Detectors flag this too — it has low burstiness and uniform perplexity. This pass adds the statistical fingerprint of human authorship.
 
 ### Burstiness (sentence-length variation)
 
@@ -205,16 +209,6 @@ Voiceless writing triggers detectors just like slop does. Build a consistent aut
 
 **Reader acknowledgment.** "You've probably run into this." "If you've worked with legacy code, you know."
 
-### Epistemic texture
-
-AI writes as an omniscient narrator — it knows everything and has no memory of learning it. Humans have knowledge histories, partial understanding, and learning arcs. This is one of the strongest human signals and one of the hardest for detectors to fake.
-
-- **Knowledge provenance.** "I read somewhere that..." or "A friend who works in biotech told me..." or "The last time I checked this was 2023, so take it with a grain of salt." Humans know *how* they know things.
-- **Partial knowledge.** "I can't remember the exact number, but it was something like 40%." "I think it was Kahneman, or maybe Tversky — one of those two." AI never forgets or confuses details; humans routinely do.
-- **Changed minds.** "I used to think X, but after [experience], I lean toward Y." Intellectual evolution is deeply human.
-- **Selective depth.** Humans know some topics deeply and others superficially, and they signal which is which. "I'm not an expert on this, but from what I've gathered..." vs diving into granular detail on their specialty.
-- **Curiosity and gaps.** "I've always wondered why..." or "I still don't fully understand how..." Humans are comfortable with open questions.
-
 ### Micro-imperfections
 
 Detectors look for statistical "smoothness." Small irregularities break it.
@@ -224,62 +218,116 @@ Detectors look for statistical "smoothness." Small irregularities break it.
 - **Mild repetition for emphasis.** "It was slow. Not a little slow. Painfully slow."
 - **Hedging in specific spots, not globally.** "I think this works, but I haven't tested edge cases" — hedge one claim, not all of them.
 - **Incomplete resolution.** "I'm not sure what the right answer is here. Moving on."
-- **Imprecise numbers where AI would be exact.** "About twenty people" not "approximately 20 individuals." "A couple hundred bucks" not "$200."
-- **Backtracking mid-thought.** "The main reason is — actually, no, let me back up."
+
+### Academic burstiness and voice
+
+Academic writing can pass detection without sounding casual. The trick is varying complexity while staying formal.
+
+**Sentence-length variation within formality.** Short formal sentences exist. "This matters." "The data were clear." "No pattern emerged." Alternate these with longer analytical sentences. Target: at least 2 sentences under 12 words per paragraph, mixed with 1–2 over 30 words.
+
+**Researcher positioning.** Qualitative and mixed-methods papers expect first person. Use it: "We argue", "In our reading", "Our interpretation differs from", "The interviews revealed something we did not expect." This raises perplexity because AI avoids committing to positions in academic voice.
+
+**Citation integration variety.** Rotate across these forms within a single section:
+- Narrative: "Schein (2017) defined culture as..."
+- Parenthetical: "...organizational norms (Schein, 2017)."
+- Embedded: "Schein's (2017, p. 12) three-level model captures..."
+- Comparative: "Unlike earlier models (e.g., Hofstede, 1980), Schein emphasized..."
+- Discursive: "The claim that culture operates at unconscious levels (see Schein, 2017) has drawn criticism from..."
+
+**Paragraph openers.** Avoid starting every paragraph with a topic sentence. Academic alternatives:
+- A question: "But does hierarchical culture always produce stress?"
+- A concession: "Admittedly, this framework has limitations."
+- A specific datum: "Participant 7 described her workplace as 'a pressure cooker with a smile.'"
+- A methodological aside: "At this point in the analysis, a pattern began to emerge."
+- A direct claim: "This explanation is incomplete."
+
+**Concrete specificity over abstraction.** Replace "in organizational contexts" with "in the three IT firms we studied." Replace "research has demonstrated" with "a 2019 meta-analysis of 42 studies found." Specificity is the single strongest perplexity booster in academic text.
+
+**Uneven theoretical treatment.** Real researchers have favorites. Spend a full paragraph engaging with one theory. Mention another in a single sentence. This asymmetry signals human judgment.
 
 ---
 
 ## Pass 3: Detector audit
 
-After rewriting, run this self-check against what detectors actually measure. Modern detectors (GPTZero, Originality.ai 3.0+, Copyleaks, Winston AI) use both document-level statistical analysis and sentence-level classification — a single AI-sounding sentence in an otherwise human paragraph can flag the whole section.
+After rewriting, run this self-check against what detectors actually measure:
 
-**Perplexity check** — Read each sentence: "Would a language model predict this exact word sequence with high confidence?" If yes for most sentences, inject more unexpected choices. Pay special attention to opening sentences of paragraphs — detectors weight these heavily.
+**Perplexity check** — Read each sentence: "Would a language model predict this exact word sequence with high confidence?" If yes for most sentences, inject more unexpected choices.
 
-**Burstiness check** — Estimate words per sentence. If standard deviation is low (most sentences ±5 words of each other), restructure. Need a mix of very short and very long. Target coefficient of variation > 0.4.
+**Burstiness check** — Estimate words per sentence. If standard deviation is low (most sentences ±5 words of each other), restructure. Need a mix of very short and very long.
 
-**Vocabulary check** — Scan for any surviving word from the AI vocabulary list (#7). Replace or justify each one. Also check for pattern #27 connector addiction — mass connectors are a strong signal in newer classifiers.
-
-**Sentence-level scan** — Read each sentence individually and ask: "Does this sentence sound like it was generated by a language model?" Detectors now classify at the sentence level and aggregate. Flag sentences that are:
-- Perfectly grammatical with no personality
-- Generic enough to appear in any article on the topic
-- Smoothly connected to the previous sentence with a textbook transition
+**Vocabulary check** — Scan for any surviving word from the AI vocabulary list (#7). Replace or justify each one.
 
 **Structure check:**
 - All paragraphs roughly the same length? Fix.
 - Every paragraph flows smoothly from the previous? Break one transition.
 - Clear intro-body-conclusion structure? Humans don't always follow it.
-- Exhaustive balanced coverage (#26)? Cut the boring parts.
-- Recursive summarization (#29)? Cut the recap.
-
-**Epistemic check:**
-- Does the text read like an omniscient narrator? Add knowledge provenance.
-- Is confidence level uniform throughout? Vary it.
-- Any "I don't know" or "I'm not sure" moments? If zero, the text sounds AI-generated regardless of other signals.
 
 **Voice check:**
 - Can you identify a specific person behind this writing? If "anyone could have written this," add personality.
 - At least one opinion, one question, one specific detail?
-- At least one moment of imprecision, uncertainty, or backtracking?
 
 **Read-aloud test** — Read the text aloud. Flag anything that sounds assembled rather than written. Flag anything you wouldn't say to a knowledgeable colleague.
 
 **Final prompt** — "What makes this obviously AI generated?" List remaining tells, fix them. If nothing remains, the text passes.
 
+### Turnitin-specific audit (for academic papers)
+
+Turnitin classifies each sentence independently, then aggregates. A paper can have some flagged sentences and still pass if enough sentences read as human. Target: fewer than 20% of sentences flagged.
+
+**Sentence-level perplexity sweep.** Read each sentence in isolation. Ask: "Is this the most likely way a language model would phrase this?" If yes, rephrase that sentence — change word order, swap a synonym, add or remove a clause, or restructure entirely. Focus on the sentences that feel most "default."
+
+**Paragraph perplexity uniformity.** If every sentence in a paragraph has similar complexity and vocabulary level, the paragraph will flag even if individual sentences seem fine. Ensure each paragraph contains at least one sentence that differs noticeably in length or structure from its neighbors.
+
+**Nominalization audit.** Count abstract noun phrases per paragraph ("the determination of", "the conceptualization of"). If more than 2 per paragraph, convert some back to verb forms.
+
+**Active/passive ratio.** Check each section. If passive voice exceeds 70% of sentences, convert some to active. Methodology sections are the biggest offenders — "Interviews were conducted" → "We conducted interviews."
+
+**Citation pattern audit.** In any 3-paragraph stretch, check if all citations follow the same integration pattern. If yes, vary at least one.
+
+**Transition audit.** Check paragraph boundaries. If every paragraph's last sentence connects to the next paragraph's first sentence, break 2–3 of these connections. Let some paragraphs just end. Start the next one fresh.
+
+**Section-start audit.** Check the first sentence of each major section. If they all follow the same template ("This section presents/examines/discusses..."), rewrite half of them with a different opening strategy.
+
 ---
 
 ## Content-type adaptation
 
-| Type | Voice | Burstiness | Personality | Formality | Epistemic signals |
-|------|-------|-----------|-------------|-----------|-------------------|
-| Blog/opinion | Strong first-person | High | Opinions, humor, edge | Casual-medium | High — personal experience, changed minds |
-| Technical docs | Authoritative | Medium | Clarity over charm | Medium-formal | Medium — caveats, version notes |
-| Essay/article | Distinctive | High | Arguments, uncertainty | Medium | High — sources, intellectual honesty |
-| Email | Direct, personal | High | Very human | Casual | High — conversational hedging |
-| Academic | Measured | Medium-low | Intellectual humility | Formal | High — citations, limitations, careful claims |
-| Social media | Conversational | Very high | Maximum personality | Very casual | Medium — casual uncertainty |
-| Business/report | Professional | Medium | Understated | Medium-formal | Medium — data sourcing, assumption framing |
+| Type | Voice | Burstiness | Personality | Formality |
+|------|-------|-----------|-------------|-----------|
+| Blog/opinion | Strong first-person | High | Opinions, humor, edge | Casual-medium |
+| Technical docs | Authoritative | Medium | Clarity over charm | Medium-formal |
+| Essay/article | Distinctive | High | Arguments, uncertainty | Medium |
+| Email | Direct, personal | High | Very human | Casual |
+| Academic/research | Researcher voice (we/I) | Medium-high | Intellectual honesty, specificity | Formal |
+| Social media | Conversational | Very high | Maximum personality | Very casual |
 
-For academic/formal writing: reduce fragments and slang but keep burstiness, unexpected vocabulary, position-taking, and epistemic honesty. Formality does not equal uniformity — formal human writing still varies in sentence length, shows uncertainty, and takes positions.
+For academic writing: formality does NOT mean uniformity. The biggest mistake is making every sentence the same complexity. Mix short declarative formal sentences with longer analytical ones. Use first person where the discipline allows it (qualitative research, social sciences). Replace abstract nominalizations with verbs. Be specific where AI is vague. Vary citation integration style.
+
+---
+
+## Research paper workflow
+
+When humanizing a full research paper or dissertation, work section by section. Each section type has different AI tells and different strategies.
+
+**Acknowledgements / Preface.** Usually the most human-sounding section already. Light touch: check for AI vocabulary (#7) and formulaic phrases (#22). Preserve the personal voice — it helps establish the author as a real person.
+
+**Abstract.** High-density flagging zone. Rewrite to be concise and specific rather than comprehensive and vague. Name the method, the sample size, the key finding. Avoid "the present study seeks to explore." Say what you found.
+
+**Introduction / Background.** Heaviest AI tell density. Strip nominalization chains (A1), break lockstep paragraphs (A4), vary sentence length aggressively (A2). Add researcher voice: "We chose this topic because..." or "The question driving this study is..." Replace "the evolving landscape" language with specific claims.
+
+**Literature review.** Most repetitive section — AI gives every source identical treatment. Fix: engage deeply with 2–3 key sources (discuss, critique, extend). Mention others briefly. Vary citation integration (A7). Break the "Author (Year) found X. Author (Year) also found Y." chain by grouping, contrasting, or narrating disagreements between sources.
+
+**Theoretical framework.** AI presents each theory as a self-contained paragraph with identical structure. Fix: give theories unequal space (A10). Critique one. Show how two theories conflict. Use the framework to make a specific argument, not just catalogue.
+
+**Methodology.** Passive voice trap (A6). Convert ≥40% of sentences to active voice. Add procedural specifics that raise perplexity: "Interviews lasted between 28 and 52 minutes" instead of "Interviews were conducted." Mention a real decision: "We chose phone interviews over video calls because participants reported feeling more candid without a camera."
+
+**Results / Findings.** Use participant quotes generously — quoted speech from interviews is inherently high-perplexity and will not flag. Frame quotes with varied introductions, not always "Participant X stated that."
+
+**Discussion.** Where researcher voice matters most. Commit to interpretations: "We believe this finding reflects..." rather than "This finding may potentially suggest." Acknowledge surprises: "We did not expect the strong negative reaction to recognition programs." Connect to practice with specifics, not platitudes.
+
+**Conclusion / Implications.** Avoid the generic positive ending (pattern #24). State limitations honestly. Make specific recommendations. End with a question or a grounded claim, not "future research should explore."
+
+For all sections: after rewriting, run the Turnitin-specific audit (Pass 3) on each section independently. If a section still reads as uniformly predictable, inject more variety before moving on.
 
 ---
 
@@ -348,6 +396,6 @@ For academic/formal writing: reduce fragments and slang but keep burstiness, une
 
 ## Reference
 
-Based on [Wikipedia:Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing), maintained by WikiProject AI Cleanup, combined with analysis of detection methodologies used by GPTZero (perplexity/burstiness scoring + sentence-level classification), Originality.ai (token probability classifiers), Turnitin (statistical feature analysis), ZeroGPT (sentence structure analysis), Copyleaks (multi-layer neural classification), and Winston AI (document fingerprinting). Patterns #25-30 based on analysis of common structural signatures in post-2024 AI outputs that earlier pattern lists missed.
+Based on [Wikipedia:Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing), maintained by WikiProject AI Cleanup, combined with analysis of detection methodologies used by GPTZero (perplexity/burstiness scoring), Originality.ai (token probability classifiers), Turnitin (statistical feature analysis), and ZeroGPT (sentence structure analysis).
 
-For detailed before/after examples of all 30 patterns, see [patterns.md](patterns.md).
+For detailed before/after examples of all 24 general patterns, see [patterns.md](patterns.md). For academic-specific patterns A1–A12, see [academic.md](academic.md).

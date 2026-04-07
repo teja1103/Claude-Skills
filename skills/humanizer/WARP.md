@@ -13,8 +13,11 @@ The "runtime" artifact is `SKILL.md`: the agent reads the YAML frontmatter (meta
   - YAML frontmatter (`---` … `---`) with `name`, `version`, `description`.
   - Three-pass humanization method: Strip AI patterns → Inject human signals → Audit against detectors.
 - `patterns.md`
-  - Reference file with detailed before/after examples for all 24 AI writing patterns.
+  - Reference file with detailed before/after examples for all 24 general AI writing patterns.
   - Read by the agent when it needs detailed examples; not loaded by default.
+- `academic.md`
+  - Reference file with detailed before/after examples for all 12 academic-specific AI patterns (A1–A12).
+  - Read by the agent when humanizing research papers, dissertations, or academic essays.
 - `README.md`
   - Installation and usage instructions.
   - Summarized pattern tables and version history.

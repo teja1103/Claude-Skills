@@ -4,13 +4,13 @@ A Cursor skill that transforms AI-generated text into writing that reads as auth
 
 ## What's different about v4
 
-Most "humanizer" tools only strip obvious AI tics (buzzwords, em dashes, emoji). That's necessary but insufficient — clean, sterile text still gets flagged because detectors also measure **statistical properties**: perplexity (word predictability), burstiness (sentence-length variation), and token probability distributions. Modern detectors (2025+) also use sentence-level classification and epistemic consistency analysis.
+v3 handled general AI text well but had a blind spot: **academic papers**. Research writing triggers Turnitin's sentence-level AI classifier through patterns that are invisible to the general 24-pattern checklist — nominalization chains, uniform sentence complexity, lockstep paragraph structure, passive voice dominance, and citation integration monotony. v4 adds 12 academic-specific patterns, a Turnitin-targeted audit pass, and a section-by-section research paper workflow.
 
 This skill uses a three-pass method:
 
-1. **Strip** — Remove 30 known AI writing patterns (based on Wikipedia's AI Cleanup project, plus 6 new reasoning/structure patterns)
-2. **Inject** — Add human writing signals: burstiness, perplexity variation, structural unpredictability, voice, epistemic texture, micro-imperfections
-3. **Audit** — Self-check against heuristics used by GPTZero, Originality.ai, Turnitin, ZeroGPT, Copyleaks, and Winston AI
+1. **Strip** — Remove 24 general + 12 academic AI writing patterns
+2. **Inject** — Add human writing signals: burstiness, perplexity variation, structural unpredictability, voice, micro-imperfections, and academic-specific techniques (researcher positioning, citation variety, concrete specificity)
+3. **Audit** — Self-check against heuristics used by GPTZero, Originality.ai, Turnitin (with sentence-level academic audit), and ZeroGPT
 
 ## Installation
 
@@ -51,8 +51,9 @@ Please humanize this text: [your text]
 
 | File | Purpose |
 |------|---------|
-| `SKILL.md` | Core skill — three-pass method, 30 pattern watchlists, human signal injection (including epistemic texture), detector audit checklist |
-| `patterns.md` | Reference — detailed before/after examples for all 30 AI patterns |
+| `SKILL.md` | Core skill — three-pass method, 24 general + 12 academic patterns, human signal injection, Turnitin-specific audit, research paper workflow |
+| `patterns.md` | Reference — detailed before/after examples for all 24 general AI patterns |
+| `academic.md` | Reference — detailed before/after examples for all 12 academic-specific AI patterns (A1–A12) |
 | `README.md` | This file — installation, usage, overview |
 
 ## The 24 AI patterns
@@ -101,17 +102,7 @@ Please humanize this text: [your text]
 | 23 | Excessive hedging | Commit to a claim or remove |
 | 24 | Generic conclusions | End with specifics |
 
-### Reasoning and structure patterns (new in v4)
-| # | Pattern | What to do |
-|---|---------|-----------|
-| 25 | Numbered-step reasoning | Weave into prose unless genuinely sequential |
-| 26 | Exhaustive balanced coverage | Be lopsided — spend time on what matters |
-| 27 | Connector addiction | Delete most transitions; start with the subject |
-| 28 | Abstraction over specifics | Name concrete details, numbers, examples |
-| 29 | Recursive summarization | Don't restate — move forward |
-| 30 | Uniform confidence tone | Vary certainty — be sure, tentative, and uncertain |
-
-## Human signal injection (expanded in v4)
+## Human signal injection
 
 Beyond stripping patterns, the skill teaches the agent to inject signals that mark writing as human:
 
@@ -119,18 +110,38 @@ Beyond stripping patterns, the skill teaches the agent to inject signals that ma
 - **Perplexity variation** — Use occasionally unexpected but valid word choices to break statistical uniformity
 - **Structural unpredictability** — Vary paragraph lengths, break logical order, use abrupt transitions
 - **Voice markers** — Contractions, fragments, self-interruption, rhetorical questions, parenthetical asides, position-taking
-- **Epistemic texture** (new) — Knowledge provenance ("I read somewhere..."), partial knowledge, changed minds, selective depth, curiosity about open questions
-- **Micro-imperfections** — Register shifts, incomplete resolutions, mild intentional repetition, imprecise numbers, mid-thought backtracking
-- **Content-type adaptation** — Different strategies for blog posts vs. academic writing vs. emails vs. business reports
+- **Micro-imperfections** — Register shifts, incomplete resolutions, mild intentional repetition
+- **Content-type adaptation** — Different strategies for blog posts vs. academic writing vs. emails
+- **Academic burstiness** — Short formal sentences mixed with complex analytical ones (v4)
+- **Researcher positioning** — First-person voice, intellectual commitments, specific interpretations (v4)
+- **Citation integration variety** — Rotate narrative, parenthetical, embedded, comparative, discursive forms (v4)
+- **Concrete specificity** — Replace abstract nominalizations with verbs and specific details (v4)
 
 ## References
 
 - [Wikipedia: Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing) — primary source for the 24 patterns
 - [WikiProject AI Cleanup](https://en.wikipedia.org/wiki/Wikipedia:WikiProject_AI_Cleanup) — maintaining organization
 
+## The 12 academic AI patterns (v4)
+
+| # | Pattern | What to do |
+|---|---------|-----------|
+| A1 | Nominalization stacking | Convert abstract noun chains back to verbs |
+| A2 | Uniform sentence complexity | Mix short declarative with long analytical sentences |
+| A3 | Academic vocabulary inflation | Use plainer equivalents unless term is a defined construct |
+| A4 | Lockstep paragraph structure | Vary openers: questions, concessions, data, claims |
+| A5 | Formulaic metadiscourse | Replace "The present study seeks to" with varied forms |
+| A6 | Passive voice dominance | Convert ≥40% of methodology sentences to active voice |
+| A7 | Citation integration monotony | Rotate across 5 citation styles within each section |
+| A8 | Triad amplification | Use natural counts, not always three |
+| A9 | Qualifier chains | Cut to one qualifier or none |
+| A10 | Theoretical name-dropping | Give unequal treatment to theories |
+| A11 | Gap rhetoric | State gaps plainly, not grandiose |
+| A12 | Hedging uniformity | Commit to some claims, vary hedge constructions |
+
 ## Version history
 
-- **4.0.0** — 6 new patterns (#25-30: reasoning and structure tells), epistemic texture injection, sentence-level detector audit, updated for Copyleaks/Winston AI, expanded micro-imperfections, business/report content type
+- **4.0.0** — Academic paper support: 12 academic-specific AI patterns (A1–A12), Turnitin sentence-level audit, research paper section-by-section workflow, academic burstiness and voice techniques, citation integration variety, new academic.md reference file
 - **3.0.0** — Major rewrite: three-pass method (Strip/Inject/Audit), human signal injection techniques (burstiness, perplexity, voice), detector audit checklist, expanded AI vocabulary watchlist, content-type adaptation, patterns moved to reference file
 - **2.2.0** — Added final "obviously AI generated" audit + second-pass rewrite
 - **2.1.1** — Fixed pattern #18 example (curly quotes vs straight quotes)
